@@ -160,6 +160,7 @@ export function analyze(content: string, type: ChannelType): AnalysisResult {
       risk_level: "Safe",
       reasons: ["No content provided"],
       highlighted_words: [],
+      breakdown: { mlScore: 0, keywordRisk: 0, urlRisk: 0 },
     };
   }
 
