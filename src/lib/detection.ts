@@ -16,6 +16,11 @@ export interface AnalysisResult {
   risk_level: RiskLevel;
   reasons: string[];
   highlighted_words: string[];
+  breakdown: {
+    mlScore: number;       // 0-100
+    keywordRisk: number;   // 0-100
+    urlRisk: number;       // 0-100
+  };
 }
 
 /* Weighted phishing/scam lexicon — tuned from common phishing corpora.
@@ -223,5 +228,10 @@ export function analyze(content: string, type: ChannelType): AnalysisResult {
     risk_level,
     reasons: reasons.slice(0, 6),
     highlighted_words: [...highlighted].slice(0, 20),
+    breakdown: {
+      mlScore: ml,
+      keywordRisk: Math.round((keywordScore / 60) * 100),
+      urlRisk: Math.round(urlRiskMax),
+    },
   };
 }
