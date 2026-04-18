@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      threat_logs: {
+        Row: {
+          content: string
+          created_at: string
+          highlighted_words: Json
+          id: string
+          prediction: string
+          reasons: Json
+          risk_level: string
+          risk_score: number
+          type: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          highlighted_words?: Json
+          id?: string
+          prediction: string
+          reasons?: Json
+          risk_level: string
+          risk_score: number
+          type: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          highlighted_words?: Json
+          id?: string
+          prediction?: string
+          reasons?: Json
+          risk_level?: string
+          risk_score?: number
+          type?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
